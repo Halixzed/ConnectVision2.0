@@ -1,0 +1,115 @@
+/* BusinessManagerPage.css */
+.business-manager-page {
+  background: #202020;
+  color: #fff;
+  min-height: 100vh;
+}
+
+.bu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.bu-row {
+  width: 1150px; /* wider row */
+  background: #2b2b2b;
+  border-radius: 0;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.6);
+}
+
+.bu-row-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 18px;
+  background-color: #333333;
+  height: 25px;
+  transition: background-color 150ms ease;
+}
+
+.bu-row-content:hover {
+  background: #282828;
+}
+
+.badge {
+  position: relative;
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+}
+
+.icon-badge .badge-count,
+.alarm-badge .badge-count {
+  background: #111;
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 12px;
+  margin-left: 6px;
+}
+
+.icon-border {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 1px solid #8a8a8a;
+  border-radius: 12px;
+}
+
+.icon-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid #d0d0d0;
+  background: #3a3a3a;
+  display: inline-block;
+}
+
+.icon-separator {
+  width: 1px;
+  height: 18px;
+  background: #8a8a8a;
+  display: inline-block;
+}
+
+/* footer logo bottom-right */
+.footer-logo {
+  position: fixed;
+  right: 22px;
+  bottom: 18px;
+  height: 42px;
+  opacity: 0.95;
+}
+
+.icon-border {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #ffffff;
+  border-radius: 4px;
+}
+
+.greetings-search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 56px;
+  margin-top: 56px;
+  margin-left: 512px;
+  margin-right: 512px;
+
+}
+
+.greetings-icon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.left-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

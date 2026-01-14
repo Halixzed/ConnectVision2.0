@@ -1,0 +1,57 @@
+.role-selector {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  overflow: hidden;
+  z-index: 900;
+}
+
+.panel {
+  flex: 0 0 50vw;
+  width: 50vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  opacity: 0;
+  transform: translate3d(0, 10px, 0);
+}
+
+/* fade-up on mount */
+@keyframes panelFadeUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+.role-selector.fade-in .panel.left {
+  animation: panelFadeUp 420ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0ms;
+}
+.role-selector.fade-in .panel.right {
+  animation: panelFadeUp 420ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 80ms;
+}
+
+/* visual themes */
+.panel.left {
+  color: #fff;
+}
+.panel.right {
+  color: #fff;
+}
+
+/* slide out transforms */
+.panel.left.slide-out-right {
+  transform: translate3d(100%, 0, 0);
+}
+.panel.right.slide-out-left {
+  transform: translate3d(-100%, 0, 0);
+}
