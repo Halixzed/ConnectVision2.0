@@ -1,6 +1,22 @@
 /* BusinessManagerPage.css */
+.app-container {
+  display: flex;
+  min-height: calc(100vh - 64px);
+  background-color: #202020;
+}
+
+.app-left {
+  flex: 0 0 60%;
+  min-width: 0;
+}
+
+.app-right {
+  flex: 0 0 40%;
+  min-width: 0;
+  padding: 32px 24px;
+}
+
 .business-manager-page {
-  background: #202020;
   color: #fff;
   min-height: 100vh;
 }
@@ -9,11 +25,30 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  align-items: center;
+  align-items: stretch;
 }
 
+
+
+
+.widgets-panel {
+  border-left: 1px solid #3a3a3a; /* Only left border */
+  min-height: 100vh; /* Full viewport height */
+  padding: 16px;
+  color: #bdbdbd;
+  box-sizing: border-box;
+
+  display: flex;              /* Enable flexbox */
+  justify-content: center;    /* Horizontal center */
+  align-items: center;        /* Vertical center */
+  text-align: center;         /* Center text alignment */
+}
+
+
+
+
 .bu-row {
-  width: 1150px; /* wider row */
+  width: 100%;
   background: #2b2b2b;
   border-radius: 0;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.6);
@@ -94,11 +129,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 56px;
-  margin-top: 56px;
-  margin-left: 512px;
-  margin-right: 512px;
-
+  margin: 32px auto;
+  padding: 0 24px;
+  gap: 16px;
+  flex-wrap: wrap;
+  max-width: 100%;
 }
 
 .greetings-icon {
@@ -112,4 +147,15 @@
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+@media (max-width: 1100px) {
+  .app-container {
+    flex-direction: column;
+  }
+
+  .app-left,
+  .app-right {
+    flex: 1 1 auto;
+  }
 }

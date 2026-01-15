@@ -10,15 +10,36 @@ import {
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import settingsIcon from "../assets/SettingsIcon.svg";
 import GuidedBeacon from "./GuidedBeacon";
+import React from "react";
 
 type Props = { onBack?: () => void };
 
 export default function Header({ onBack }: Props) {
+  const [now, setNow] = React.useState(() => new Date());
+  React.useEffect(() => {
+    const interval = window.setInterval(() => setNow(new Date()), 60_000);
+    return () => window.clearInterval(interval);
+  }, []);
+
+  const timeLabel = now.toLocaleString("en-US", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
+
   return (
     <AppBar
       position="static"
       color="default"
-      sx={{ backgroundColor: "#1f1f1f", color: "#fff" }}
+      sx={{
+        backgroundColor: "#202020",
+        color: "#fff",
+        boxShadow: "0 6px 16px rgba(0, 0, 0, 0.35)",
+        borderBottom: "1px solid #2c2c2c",
+      }}
     >
       <GuidedBeacon
         target=".settings-button"
@@ -40,7 +61,7 @@ export default function Header({ onBack }: Props) {
           )}
           {/*<img src="/assets/logo-small.png" alt="logo" style={{ height: 28 }} />*/}
           <Typography variant="h6" component="div">
-            LOGO
+            L O G O
           </Typography>
         </Box>
 
@@ -48,11 +69,8 @@ export default function Header({ onBack }: Props) {
 
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
           <Typography variant="caption" sx={{ opacity: 0.7 }}>
-            12/01/2026 12:59
+            {timeLabel}
           </Typography>
-        </Box>
-
-        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
           <IconButton
             className="settings-button"
             color="inherit"
