@@ -1,0 +1,42 @@
+.beacon-button {
+  position: absolute;
+  bottom: -6px;
+  right: -6px;
+  width: 18px;
+  height: 18px;
+  border: none;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.beacon-dot {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #ff6b1b;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.beacon-pulse {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid rgba(240, 106, 36, 0.6);
+  animation: beaconPulse 1.6s ease-out infinite;
+}
+
+@keyframes beaconPulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.9;
+  }
+  70% {
+    transform: scale(1.1);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.1);
+    opacity: 0;
+  }
+}

@@ -5,23 +5,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #333333; /* fixed: no parentheses */
+  background: #ffffff; /* fixed: no parentheses */
   color: #fff;
   z-index: 9999;
 
   will-change: transform;
   backface-visibility: hidden;
-
-  transform: translate3d(0, -4%, 0);
-
-  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
-
-  /* Smooth, hardware-accelerated transform */
-  will-change: transform;
-  backface-visibility: hidden;
   transform: translate3d(0, 0, 0);
-
-  /* duration + smooth easing */
   transition: transform 1500ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -33,14 +23,4 @@
   /* slide fully off-screen (no opacity/fade) */
   transform: translate3d(0, -100%, 0);
   pointer-events: none;
-}
-
-/* page visibility handled separately */
-.page-hidden {
-  visibility: hidden;
-  pointer-events: none;
-}
-.page-visible {
-  visibility: visible;
-  pointer-events: auto;
 }

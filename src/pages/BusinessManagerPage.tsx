@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Container,
   Box,
@@ -5,15 +6,16 @@ import {
   Stack,
   TextField,
   InputAdornment,
-  //IconButton,
 } from "@mui/material";
-//import WarningAmberIcon from "@mui/icons-material/WarningAmber";
-//import NotificationsIcon from "@mui/icons-material/Notifications";
 import connectLogo from "../assets/connect_flexeserve.svg";
 import Header from "../components/Header";
 import "./BusinessManagerPage.css";
 import PlaceIcon from "@mui/icons-material/Place";
 import SearchIcon from "@mui/icons-material/Search";
+import FanLifeWidget from "../components/widgets/FanLifeWidget";
+import EnergyUsageWidget from "../components/widgets/EnergyUsageWidget";
+import ElementLifeWidget from "../components/widgets/ElementLifeWidget";
+import AlarmsWidget from "../components/widgets/AlarmsWidget";
 
 const BU_ROWS = [
   {
@@ -52,6 +54,28 @@ export default function BusinessManagerPage({
   onBack?: () => void;
   onOpen?: (id: string) => void;
 }) {
+  const widgetsRef = React.useRef<HTMLDivElement | null>(null);
+
+  React.useEffect(() => {
+    const PackeryCtor = (window as typeof window & { Packery?: any }).Packery;
+    if (!PackeryCtor || !widgetsRef.current) return;
+
+    const packery = new PackeryCtor(widgetsRef.current, {
+      itemSelector: ".widget-cell",
+      gutter: 12,
+      percentPosition: true,
+    });
+
+    const raf = window.requestAnimationFrame(() => {
+      packery.layout?.();
+    });
+
+    return () => {
+      window.cancelAnimationFrame(raf);
+      packery.destroy?.();
+    };
+  }, []);
+
   return (
     <div className="business-manager-page">
       <Header onBack={onBack} />
@@ -64,8 +88,8 @@ export default function BusinessManagerPage({
                 aria-hidden
                 sx={{ scale: 1.6 }}
               />
-              <Typography variant="h4" sx={{ fontWeight: 600, color: "white" }}>
-                View all BUs
+              <Typography variant="h4" sx={{ fontWeight: 600, color: "#333333" }}>
+                View all locations
               </Typography>
             </div>
 
@@ -115,7 +139,7 @@ export default function BusinessManagerPage({
                 maxWidth: { xs: "100%", sm: 420, md: 520 },
                 "& .MuiInputBase-root": {
                   color: "#fff",
-                  backgroundColor: "#2b2b2b",
+                  backgroundColor: "#ffffff",
                   paddingRight: 0,
                   paddingTop: 0,
                   paddingBottom: 0,
@@ -151,21 +175,27 @@ export default function BusinessManagerPage({
                 <Box
                   key={r.id}
                   className="bu-row"
-                  sx={{ borderLeft: "4px solid #ffffffff" }}
+                  sx={{ borderLeft: "4px solid #333333" }}
                 >
                   <Box className="bu-row-content">
                     <Box>
                       <Typography
                         variant="subtitle1"
-                        sx={{ fontFamily: "Inter, sans-serif", fontWeight: 100 }}
-                        color="white"
+                        sx={{
+                          fontFamily: "Inter, sans-serif",
+                          fontWeight: 500,
+                        }}
+                        color="#333333"
                       >
                         {r.title}
                       </Typography>
                       <Typography
                         variant="caption"
-                        sx={{ fontFamily: "Inter, sans-serif", fontWeight: 100 }}
-                        color="lightgray"
+                        sx={{
+                          fontFamily: "Inter, sans-serif",
+                          fontWeight: 400,
+                        }}
+                        color="#333333"
                       >
                         {r.subtitle}
                       </Typography>
@@ -192,7 +222,22 @@ export default function BusinessManagerPage({
           <img src={connectLogo} alt="connect" className="footer-logo" />
         </div>
         <div className="app-right">
-          <div className="widgets-panel">Widgets area (UNDER CONSTRUCTION)</div>
+          <div className="widgets-panel">
+            <div ref={widgetsRef} className="widgets-grid">
+              <div className="widget-cell">
+                <FanLifeWidget />
+              </div>
+              <div className="widget-cell">
+                <EnergyUsageWidget />
+              </div>
+              <div className="widget-cell">
+                <ElementLifeWidget />
+              </div>
+              <div className="widget-cell">
+                <AlarmsWidget />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

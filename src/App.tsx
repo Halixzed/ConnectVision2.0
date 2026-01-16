@@ -7,9 +7,8 @@ import RoleSelector from "./components/RoleSelector";
 import BusinessManagerPage from "./pages/BusinessManagerPage";
 import OperatorPage from "./pages/OperatorPage";
 
-//import BUDetail from "./pages/BUDetail";
-
 const SLIDE_MS = 600;
+const INACTIVITY_MS = 30_000;
 
 export default function App() {
   const [heroVisible, setHeroVisible] = React.useState(true);
@@ -54,6 +53,39 @@ export default function App() {
     }, 650); // must match CSS duration (600ms + small buffer)
   };
 
+  const handleBackToHero = () => {
+    setSelectorVisible(false);
+    setSelectedRole(null);
+    setEnterDirection(null);
+    setHeroVisible(true);
+  };
+
+  React.useEffect(() => {
+    if (heroVisible) return;
+
+    let timer: ReturnType<typeof setTimeout> | null = null;
+    const events = ["mousemove", "keydown", "touchstart", "scroll"];
+
+    const reset = () => {
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(() => {
+        setSelectedRole(null);
+        setSelectorVisible(false);
+        setEnterDirection(null);
+        setPageEnter(false);
+        setHeroVisible(true);
+      }, INACTIVITY_MS);
+    };
+
+    reset();
+    events.forEach((ev) => window.addEventListener(ev, reset));
+
+    return () => {
+      if (timer) clearTimeout(timer);
+      events.forEach((ev) => window.removeEventListener(ev, reset));
+    };
+  }, [heroVisible]);
+
   return (
     <div className="app-root">
       <HeroSlide visible={heroVisible} onClose={handleGetStarted} />
@@ -61,6 +93,7 @@ export default function App() {
       {selectorVisible && !selectedRole && (
         <RoleSelector
           onSelect={handleSelectRole}
+          onBack={handleBackToHero}
           onClose={() => {
             console.log(
               "App: RoleSelector finished - hiding selector and entering page",

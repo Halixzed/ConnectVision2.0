@@ -2,15 +2,17 @@
 import React from "react";
 import "./RoleSelector.css";
 import { Box, Typography, Button } from "@mui/material";
+import BackButton from "./BackButton";
 
 export type Role = "manager" | "operator";
 
 type Props = {
   onSelect: (role: Role) => void;
   onClose?: () => void;
+  onBack?: () => void;
 };
 
-export default function RoleSelector({ onSelect, onClose }: Props) {
+export default function RoleSelector({ onSelect, onClose, onBack }: Props) {
   const [mounted, setMounted] = React.useState(false);
   const [animating, setAnimating] = React.useState<Role | null>(null);
   React.useEffect(() => {
@@ -39,6 +41,11 @@ export default function RoleSelector({ onSelect, onClose }: Props) {
       role="region"
       aria-label="Choose view"
     >
+      {onBack && (
+        <div className="role-back">
+          <BackButton onClick={onBack} />
+        </div>
+      )}
       <div
         className={`panel left ${animating === "manager" ? "slide-out-right" : ""}`}
         style={{
@@ -59,7 +66,7 @@ export default function RoleSelector({ onSelect, onClose }: Props) {
             px: 3,
           }}
         >
-          <Typography variant="h3" gutterBottom>
+          <Typography sx={{ color: "#333333" }} variant="h3" gutterBottom>
             Business Manager
           </Typography>
           <Typography
@@ -98,7 +105,7 @@ export default function RoleSelector({ onSelect, onClose }: Props) {
             px: 3,
           }}
         >
-          <Typography variant="h3" gutterBottom>
+          <Typography sx={{ color: "#333333" }} variant="h3" gutterBottom>
             Operator
           </Typography>
           <Typography

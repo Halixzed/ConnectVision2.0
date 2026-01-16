@@ -1,0 +1,50 @@
+.widget-energy {
+  background: linear-gradient(135deg, #d94d14 0%, #f06a24 60%, #ff8a3c 100%);
+}
+
+.energy-gauge {
+  margin-top: 6px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.energy-gauge svg {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.energy-label {
+  margin-top: 4px;
+  font-size: 10px;
+  color: #e2e2e2;
+}
+
+.energy-legend {
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 9px;
+  color: #bcbcbc;
+  flex-wrap: wrap;
+}
+
+.energy-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.energy-dot.low {
+  background: #bdbdbd;
+}
+
+.energy-dot.optimal {
+  background: #17ff4f;
+}
+
+.energy-dot.high {
+  background: #f0d000;
+}

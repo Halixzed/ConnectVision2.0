@@ -4,6 +4,16 @@
   display: flex;
   overflow: hidden;
   z-index: 900;
+  background-color: #fff;
+  
+}
+
+.role-back {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 910;
+  color: black;
 }
 
 .panel {
@@ -54,4 +64,24 @@
 }
 .panel.right.slide-out-left {
   transform: translate3d(-100%, 0, 0);
+}
+
+@media (max-width: 900px) {
+  .role-selector {
+    flex-direction: column;
+  }
+
+  .panel {
+    width: 100vw;
+    flex: 0 0 50vh;
+    height: 50vh;
+  }
+
+  .panel.left.slide-out-right {
+    transform: translate3d(0, 100%, 0);
+  }
+
+  .panel.right.slide-out-left {
+    transform: translate3d(0, -100%, 0);
+  }
 }

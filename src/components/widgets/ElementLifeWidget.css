@@ -1,0 +1,30 @@
+.widget-element {
+  background: linear-gradient(135deg, #d94d14 0%, #f06a24 60%, #ff8a3c 100%);
+}
+
+.widget-progress {
+  margin-top: 12px;
+  height: 6px;
+  background: #1c1c1c;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.widget-progress-fill {
+  width: 62%;
+  height: 100%;
+  background: linear-gradient(90deg, #d94d14 0%, #ff8a3c 100%);
+  animation: progressShift 3s ease-in-out infinite;
+}
+
+@keyframes progressShift {
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.2);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}

@@ -1,0 +1,50 @@
+.widget-card {
+  background: linear-gradient(145deg, #262626 0%, #1e1e1e 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 12px 12px 10px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.widget-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.45);
+}
+
+.widget-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 10px;
+  color: #e8e8e8;
+}
+
+.widget-value {
+  margin-top: 8px;
+  font-size: 34px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.widget-value span {
+  font-size: 14px;
+  font-weight: 600;
+  margin-left: 6px;
+  color: #ffe0d3;
+}
+
+.widget-sub {
+  margin-top: 4px;
+  color: #e0e0e0;
+  font-size: 10px;
+  line-height: 1.3;
+}

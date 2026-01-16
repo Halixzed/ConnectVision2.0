@@ -29,7 +29,7 @@ export default function HeroSlide({ visible, onClose }: Props) {
           variant="h2"
           component="h1"
           gutterBottom
-          sx={{ fontFamily: "'Inter', sans-serif", fontWeight: 800 }}
+          sx={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, color: "#333333" }}
         >
           {/* flexeserve (second 'e' colored) */}
           {"fl" + "e" + "x"}

@@ -3,18 +3,18 @@ import {
   Toolbar,
   Box,
   Typography,
-  //InputBase,
   IconButton,
 } from "@mui/material";
-//import SearchIcon from "@mui/icons-material/Search";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import settingsIcon from "../assets/SettingsIcon.svg";
-import GuidedBeacon from "./GuidedBeacon";
+import GuidedBeacon, { type GuidedBeaconHandle } from "./GuidedBeacon";
+import Beacon from "./Beacon";
 import React from "react";
+import BackButton from "./BackButton";
 
 type Props = { onBack?: () => void };
 
 export default function Header({ onBack }: Props) {
+  const beaconRef = React.useRef<GuidedBeaconHandle | null>(null);
   const [now, setNow] = React.useState(() => new Date());
   React.useEffect(() => {
     const interval = window.setInterval(() => setNow(new Date()), 60_000);
@@ -35,63 +35,56 @@ export default function Header({ onBack }: Props) {
       position="static"
       color="default"
       sx={{
-        backgroundColor: "#202020",
-        color: "#fff",
+        backgroundColor: "#ffffffff",
+        color: "#202020",
         boxShadow: "0 6px 16px rgba(0, 0, 0, 0.35)",
         borderBottom: "1px solid #2c2c2c",
       }}
     >
       <GuidedBeacon
+        ref={beaconRef}
         target=".settings-button"
         content="Configure your preferences here."
         delayMs={650}
-        repeat
+        autoStart={false}
       />
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         <Box display="flex" alignItems="center" gap={2}>
           {onBack && (
-            <IconButton
-              edge="start"
-              color="inherit"
-              onClick={onBack}
-              aria-label="Back"
-            >
-              <ArrowBackIcon />
-            </IconButton>
+            <BackButton onClick={onBack} />
           )}
-          {/*<img src="/assets/logo-small.png" alt="logo" style={{ height: 28 }} />*/}
           <Typography variant="h6" component="div">
-            L O G O
+            LOGO
           </Typography>
         </Box>
-
-        
 
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
           <Typography variant="caption" sx={{ opacity: 0.7 }}>
             {timeLabel}
           </Typography>
-          <IconButton
-            className="settings-button"
-            color="inherit"
-            aria-label="Settings"
-          >
-            <Box
-              component="img"
-              src={settingsIcon}
-              alt=""
-              sx={{
-                width: 20,
-                height: 20,
-                background: "linear-gradient(45deg, #d94d14 0%, #f06a24 100%)",
-                borderRadius: "6px",
-                padding: "4px",
-              }}
-            />
-          </IconButton>
+          <Box sx={{ position: "relative", display: "inline-flex" }}>
+            <IconButton
+              className="settings-button"
+              color="inherit"
+              aria-label="Settings"
+            >
+              <Box
+                component="img"
+                src={settingsIcon}
+                alt=""
+                sx={{
+                  width: 20,
+                  height: 20,
+                  background:
+                    "linear-gradient(45deg, #d94d14 0%, #f06a24 100%)",
+                  borderRadius: "6px",
+                  padding: "4px",
+                }}
+              />
+            </IconButton>
+            <Beacon onClick={() => beaconRef.current?.start()} />
+          </Box>
         </Box>
-
-
       </Toolbar>
     </AppBar>
   );
