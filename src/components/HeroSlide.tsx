@@ -25,7 +25,14 @@ export default function HeroSlide({ visible, onClose }: Props) {
       aria-labelledby="hero-title"
     >
       <div className="video-background">
-        <video autoPlay loop muted playsInline className="video" src={heroVideo}></video>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="video"
+          src={heroVideo}
+        ></video>
       </div>
 
       <Box className="hero-content">

@@ -113,32 +113,16 @@ export default function BusinessManagerPage({
                       alignSelf: "stretch",
                       display: "flex",
                       alignItems: "center",
-                      color: "#333333",  
+                      color: "#333333",
                     }}
                   >
-                    <Box
-                      component="button"
+                    <button
                       type="button"
                       aria-label="Search"
-                      sx={{
-                        background:
-                          "linear-gradient(45deg, #d94d14 0%, #f06a24 100%)",
-                        borderRadius: "0 6px 6px 0",
-                        border: "none",
-                        padding: 0,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        width: 64,
-                        height: 35,
-                        position: "relative",
-                        top: 2,
-                        cursor: "pointer",
-                      }}
-                      
+                      className="search-button"
                     >
                       <SearchIcon fontSize="small" sx={{ color: "#fff" }} />
-                    </Box>
+                    </button>
                   </InputAdornment>
                 ),
               }}

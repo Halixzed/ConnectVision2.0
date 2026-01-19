@@ -4,7 +4,6 @@
   min-height: calc(100vh - 64px);
   background-color: #ededee;
   color: #333333;
-  
 }
 
 .app-left {
@@ -76,7 +75,6 @@
   width: 100%;
   background: #2b2b2b;
   border-radius: 0;
-  
 }
 
 .bu-row-content {
@@ -161,6 +159,21 @@
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.search-button {
+  background: linear-gradient(45deg, #d94d14 0%, #f06a24 100%);
+  border-radius: 0 6px 6px 0;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 35px;
+  position: relative;
+  top: 2px;
+  cursor: pointer;
 }
 
 @media (max-width: 1100px) {
