@@ -20,16 +20,16 @@
 .greetings-messsage {
   font-size: 45px;
   font-weight: 600;
-  margin-bottom: 48px;
+  margin-bottom: 24px;
   margin-top: -48px;
   align-self: flex-start;
   margin-left: 24px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #8f8f8f;
 }
 
 .separator {
-  width: 100%;
+  width: calc(100% - 20%);
   height: 1px;
   background-color: #c0c0c0;
   margin: 12px 0 24px 0;
@@ -45,6 +45,7 @@
 .business-manager-page {
   color: #333333;
   min-height: 100vh;
+  position: relative;
 }
 
 .bu-list {
@@ -93,7 +94,6 @@
   width: 100%;
   background: #2b2b2b;
   border-radius: 0;
-  
 }
 
 .bu-row-content {
@@ -174,10 +174,98 @@
   width: 100%;
 }
 
+.tour-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 400ms ease;
+  z-index: 9990;
+}
+
+.tour-overlay.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.tour-overlay.is-hidden {
+  opacity: 0;
+}
+
+.tour-card {
+  max-width: 520px;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 18px 22px;
+  text-align: center;
+  position: relative;
+}
+
+.tour-beacon {
+  position: absolute;
+  right: 14px;
+  top: 12px;
+  animation: tourBeaconFade 2s ease-out 1 forwards;
+}
+
+.tour-beacon-icon {
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+}
+
+.tour-beacon-icon::before,
+.tour-beacon-icon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+}
+
+.tour-beacon-icon::before {
+  background: #fb0505;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.tour-beacon-icon::after {
+  inset: -6px;
+  border: 2px solid rgba(240, 106, 36, 0.6);
+  animation: beaconPulse 1.6s ease-out infinite;
+}
+
+@keyframes tourBeaconFade {
+  0% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .left-group {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.beacon-host {
+  position: relative;
+}
+
+.widgets-panel .beacon-button {
+  top: 10px;
+  right: 10px;
+  bottom: auto;
+  z-index: 2;
 }
 
 .search-button {

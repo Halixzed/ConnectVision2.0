@@ -29,7 +29,6 @@ export function RotatingCube({ position = [0, 0, 0] }: RotatingCubeProps) {
   );
 }
 
-
 export default function OperatorPage({ onBack }: Props) {
   const tempOptions = ["Off", "Lights Only", "170F", "175F", "180F"];
   const [temps, setTemps] = useState(["170F", "170F", "170F", "170F"]);
@@ -148,7 +147,7 @@ export default function OperatorPage({ onBack }: Props) {
         </div>
         <div className="operator-right">
           <div className="operator-cube">
-            <Canvas camera={{ position: [0, 0, 4], fov: 75 }}>
+            <Canvas camera={{ position: [0, -1, 4], fov: 75 }}>
               <ambientLight intensity={0.6} />
               <directionalLight position={[3, 3, 5]} intensity={0.8} />
               <RotatingCube position={[3, 0, 0]} />
