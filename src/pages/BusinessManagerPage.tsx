@@ -17,7 +17,6 @@ import EnergyUsageWidget from "../components/widgets/EnergyUsageWidget";
 import ElementLifeWidget from "../components/widgets/ElementLifeWidget";
 import AlarmsWidget from "../components/widgets/AlarmsWidget";
 import offlineIcon from "../assets/OfflineIcon.svg";
-//import { TypeSpecimenOutlined } from "@mui/icons-material";
 import warningIcon from "../assets/WarningIcon.svg";
 
 const BU_ROWS = [
@@ -84,6 +83,8 @@ export default function BusinessManagerPage({
       <Header onBack={onBack} />
       <div className="app-container">
         <div className="app-left">
+          <div className="greetings-messsage">Greetings User</div>
+          <div className="separator"></div>
           <div className="greetings-search">
             <div className="left-group">
               <PlaceIcon

@@ -156,7 +156,7 @@ export default function OperatorPage({ onBack }: Props) {
             </Canvas>
           </div>
           <div>
-            <h6>Placeholder cubes for the 2, 2 Tier Units</h6>
+            <h6>Placeholder cubes for the 2, 2 Tier Units :) </h6>
           </div>
         </div>
       </div>
