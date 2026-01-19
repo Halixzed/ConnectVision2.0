@@ -1,7 +1,8 @@
 // src/components/HeroSlide.tsx
 import React from "react";
 import "./HeroSlide.css";
-import { Box, Typography, Button, Stack } from "@mui/material";
+import { Box, Button, Stack } from "@mui/material";
+import heroVideo from "../assets/HeroBackground.mp4";
 
 type Props = {
   visible: boolean;
@@ -23,36 +24,17 @@ export default function HeroSlide({ visible, onClose }: Props) {
       aria-modal="true"
       aria-labelledby="hero-title"
     >
+      <div className="video-background">
+        <video autoPlay loop muted playsInline className="video" src={heroVideo}></video>
+      </div>
+
       <Box className="hero-content">
-        <Typography
-          id="hero-title"
-          variant="h2"
-          component="h1"
-          gutterBottom
-          sx={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, color: "#333333" }}
-        >
-          {/* flexeserve (second 'e' colored) */}
-          {"fl" + "e" + "x"}
-          <Box component="span" sx={{ color: "#d94d14", display: "inline" }}>
-            e
-          </Box>
-          {"serve "}
-
-          {/* Connect (the 'e' colored) */}
-          {"Conn"}
-          <Box component="span" sx={{ color: "#d94d14", display: "inline" }}>
-            e
-          </Box>
-          {"ct"}
-        </Typography>
-
         <Stack direction="row" spacing={2} justifyContent="center">
           <Button
             variant="contained"
             onClick={onClose}
             ref={primaryRef}
             aria-label="Get started"
-            disableRipple
             sx={{
               backgroundColor: "#d94d14",
               color: "#fff",

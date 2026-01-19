@@ -16,6 +16,9 @@ import FanLifeWidget from "../components/widgets/FanLifeWidget";
 import EnergyUsageWidget from "../components/widgets/EnergyUsageWidget";
 import ElementLifeWidget from "../components/widgets/ElementLifeWidget";
 import AlarmsWidget from "../components/widgets/AlarmsWidget";
+import offlineIcon from "../assets/OfflineIcon.svg";
+//import { TypeSpecimenOutlined } from "@mui/icons-material";
+import warningIcon from "../assets/WarningIcon.svg";
 
 const BU_ROWS = [
   {
@@ -88,7 +91,10 @@ export default function BusinessManagerPage({
                 aria-hidden
                 sx={{ scale: 1.6 }}
               />
-              <Typography variant="h4" sx={{ fontWeight: 600, color: "#333333" }}>
+              <Typography
+                variant="h4"
+                sx={{ fontWeight: 600, color: "#333333" }}
+              >
                 View all locations
               </Typography>
             </div>
@@ -107,6 +113,7 @@ export default function BusinessManagerPage({
                       alignSelf: "stretch",
                       display: "flex",
                       alignItems: "center",
+                      color: "#333333",  
                     }}
                   >
                     <Box
@@ -128,6 +135,7 @@ export default function BusinessManagerPage({
                         top: 2,
                         cursor: "pointer",
                       }}
+                      
                     >
                       <SearchIcon fontSize="small" sx={{ color: "#fff" }} />
                     </Box>
@@ -138,11 +146,15 @@ export default function BusinessManagerPage({
                 width: { xs: "100%", sm: 360, md: 500 },
                 maxWidth: { xs: "100%", sm: 420, md: 520 },
                 "& .MuiInputBase-root": {
-                  color: "#fff",
+                  color: "#333333",
                   backgroundColor: "#ffffff",
                   paddingRight: 0,
                   paddingTop: 0,
                   paddingBottom: 0,
+                },
+                "& .MuiInputBase-input::placeholder": {
+                  color: "#a1a1a1ff",
+                  opacity: 1,
                 },
                 "& .MuiOutlinedInput-root": {
                   paddingRight: 0,
@@ -203,14 +215,42 @@ export default function BusinessManagerPage({
 
                     <Stack direction="row" spacing={1} alignItems="center">
                       <div className="icon-border">
-                        <span className="icon-dot" aria-hidden />
+                        <img
+                          src={offlineIcon}
+                          alt=""
+                          className="offline-icon"
+                          aria-hidden
+                        />
                         <span className="icon-separator" aria-hidden />
-                        <span className="icon-dot" aria-hidden />
+                        <Typography
+                          variant="caption"
+                          sx={{
+                            fontFamily: "Inter, sans-serif",
+                            fontWeight: 500,
+                            color: "#000000ff",
+                          }}
+                        >
+                          {r.alarms}
+                        </Typography>
                       </div>
                       <div className="icon-border">
-                        <span className="icon-dot" aria-hidden />
+                        <img
+                          src={warningIcon}
+                          alt=""
+                          className="warning-icon"
+                          aria-hidden
+                        />
                         <span className="icon-separator" aria-hidden />
-                        <span className="icon-dot" aria-hidden />
+                        <Typography
+                          variant="caption"
+                          sx={{
+                            fontFamily: "Inter, sans-serif",
+                            fontWeight: 500,
+                            color: "#000000ff",
+                          }}
+                        >
+                          {r.notices}
+                        </Typography>
                       </div>
                     </Stack>
                   </Box>

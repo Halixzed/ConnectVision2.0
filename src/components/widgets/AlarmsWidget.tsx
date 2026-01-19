@@ -9,10 +9,8 @@ export default function AlarmsWidget() {
         <WarningAmberIcon fontSize="small" />
         Active Alarms
       </div>
-      <div className="alarm-count">12</div>
-      <div className="alarm-list">
-        
-      </div>
+      <div className="alarm-count" >12</div>
+      <div className="alarm-list"></div>
     </div>
   );
 }

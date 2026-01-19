@@ -1,0 +1,135 @@
+/* src/pages/OperatorPage.css */
+.operator-page {
+  background: #efefef;
+  min-height: 100vh;
+  color: #202020;
+}
+
+.operator-content {
+  padding: 48px 80px;
+}
+
+.operator-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 240px);
+  gap: 28px;
+  justify-content: start;
+}
+
+.operator-card {
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #d0d0d0;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+}
+
+.operator-card-header {
+  padding: 12px 10px;
+  text-align: center;
+  font-weight: 600;
+  border-bottom: 1px solid #7a7a7a;
+}
+
+.operator-card-body {
+  padding: 16px 12px;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  justify-content: center;
+}
+
+.operator-card-body.center {
+  align-items: center;
+}
+
+.temp-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.status-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #2e7d32;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.temp-value {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.temp-number {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.temp-unit {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  padding-top: 4px;
+}
+
+.power-button {
+  width: 110px;
+  height: 70px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(45deg, #e24a0a 0%, #f06a24 100%);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 2px 6px rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+.error-tile {
+  width: 110px;
+  height: 70px;
+  border-radius: 10px;
+  background: #f3a7a7;
+  border: 2px solid #d6453a;
+  color: #d6453a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  font-weight: 700;
+}
+
+.error-text {
+  font-size: 10px;
+  letter-spacing: 0.5px;
+}
+
+.operator-footer-logo {
+  position: fixed;
+  right: 22px;
+  bottom: 18px;
+  height: 42px;
+  opacity: 0.95;
+}
+
+@media (max-width: 900px) {
+  .operator-content {
+    padding: 24px;
+  }
+
+  .operator-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .operator-card {
+    max-width: 320px;
+  }
+}

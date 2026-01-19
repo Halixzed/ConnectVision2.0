@@ -1,19 +1,14 @@
-import {
-  AppBar,
-  Toolbar,
-  Box,
-  Typography,
-  IconButton,
-} from "@mui/material";
+import { AppBar, Toolbar, Box, Typography, IconButton } from "@mui/material";
 import settingsIcon from "../assets/SettingsIcon.svg";
 import GuidedBeacon, { type GuidedBeaconHandle } from "./GuidedBeacon";
 import Beacon from "./Beacon";
 import React from "react";
 import BackButton from "./BackButton";
+import marketLogo from "../assets/MarketLogo.svg";
 
-type Props = { onBack?: () => void };
+type Props = { onBack?: () => void; title?: string };
 
-export default function Header({ onBack }: Props) {
+export default function Header({ onBack, title }: Props) {
   const beaconRef = React.useRef<GuidedBeaconHandle | null>(null);
   const [now, setNow] = React.useState(() => new Date());
   React.useEffect(() => {
@@ -35,10 +30,12 @@ export default function Header({ onBack }: Props) {
       position="static"
       color="default"
       sx={{
-        backgroundColor: "#ffffffff",
+        backgroundColor: "#ededee",
         color: "#202020",
-        boxShadow: "0 6px 16px rgba(0, 0, 0, 0.35)",
-        borderBottom: "1px solid #2c2c2c",
+        boxShadow: "0 2px 6px rgba(0, 0, 0, 0.35)",
+        borderBottom: "1px solid #b1b1b1ff",
+        position: "relative",
+        zIndex: 2,
       }}
     >
       <GuidedBeacon
@@ -50,12 +47,21 @@ export default function Header({ onBack }: Props) {
       />
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         <Box display="flex" alignItems="center" gap={2}>
-          {onBack && (
-            <BackButton onClick={onBack} />
+          {onBack && <BackButton onClick={onBack} />}
+          <Box
+            component="img"
+            src={marketLogo}
+            alt="Market Logo"
+            sx={{ height: 40 }}
+          />
+          {title && (
+            <Typography
+              variant="subtitle1"
+              sx={{ fontWeight: 600, color: "#202020" }}
+            >
+              {title}
+            </Typography>
           )}
-          <Typography variant="h6" component="div">
-            LOGO
-          </Typography>
         </Box>
 
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
@@ -73,12 +79,12 @@ export default function Header({ onBack }: Props) {
                 src={settingsIcon}
                 alt=""
                 sx={{
-                  width: 20,
-                  height: 20,
+                  width: 36,
+                  height: 36,
                   background:
                     "linear-gradient(45deg, #d94d14 0%, #f06a24 100%)",
                   borderRadius: "6px",
-                  padding: "4px",
+                  padding: "4px 16px",
                 }}
               />
             </IconButton>

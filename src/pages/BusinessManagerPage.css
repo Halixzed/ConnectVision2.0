@@ -2,8 +2,9 @@
 .app-container {
   display: flex;
   min-height: calc(100vh - 64px);
-  background-color: #ffffff;
+  background-color: #ededee;
   color: #333333;
+  
 }
 
 .app-left {
@@ -21,6 +22,7 @@
   flex: 0 0 40%;
   min-width: 0;
   padding: 24px 20px;
+  margin-bottom: 24px;
 }
 
 .business-manager-page {
@@ -46,11 +48,10 @@
   gap: 16px;
   width: 100%;
   overflow: hidden;
-  background: #fff;
+  background: #ededee;
   padding-right: 40px;
   justify-content: center;
 }
-
 
 .widgets-grid {
   min-height: 240px;
@@ -71,12 +72,11 @@
   }
 }
 
-
 .bu-row {
   width: 100%;
   background: #2b2b2b;
   border-radius: 0;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.6);
+  
 }
 
 .bu-row-content {
@@ -99,7 +99,7 @@
   gap: 8px;
   padding: 6px 10px;
   border: 1px solid #8a8a8a;
-  border-radius: 12px;
+  border-radius: 4px;
 }
 
 .icon-dot {
@@ -108,6 +108,18 @@
   border-radius: 50%;
   border: 1px solid #d0d0d0;
   background: #3a3a3a;
+  display: inline-block;
+}
+
+.offline-icon {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+}
+
+.warning-icon {
+  width: 24px;
+  height: 24px;
   display: inline-block;
 }
 
@@ -129,11 +141,11 @@
 
 .greetings-search {
   display: flex;
-  justify-content: space-between; /* Left and right alignment */
+  justify-content: space-around; /* Left and right alignment */
   align-items: center;
   margin: 32px auto;
   padding: 0 24px;
-  gap: 24px;
+  gap: 48px;
   flex-wrap: wrap;
   max-width: 100%;
 }

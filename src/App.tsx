@@ -9,6 +9,7 @@ import OperatorPage from "./pages/OperatorPage";
 
 const SLIDE_MS = 600;
 const INACTIVITY_MS = 30_000;
+const ENABLE_INACTIVITY_RETURN = false;
 
 export default function App() {
   const [heroVisible, setHeroVisible] = React.useState(true);
@@ -61,6 +62,7 @@ export default function App() {
   };
 
   React.useEffect(() => {
+    if (!ENABLE_INACTIVITY_RETURN) return;
     if (heroVisible) return;
 
     let timer: ReturnType<typeof setTimeout> | null = null;

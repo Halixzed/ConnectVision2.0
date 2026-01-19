@@ -6,10 +6,7 @@ type Props = {
   ariaLabel?: string;
 };
 
-export default function BackButton({
-  onClick,
-  ariaLabel = "Back",
-}: Props) {
+export default function BackButton({ onClick, ariaLabel = "Back" }: Props) {
   return (
     <IconButton
       sx={{ color: "#333333" }}

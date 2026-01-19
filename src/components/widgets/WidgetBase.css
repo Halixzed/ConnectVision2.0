@@ -10,7 +10,9 @@
   flex-direction: column;
   justify-content: space-between;
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
-  transition: transform 180ms ease, box-shadow 180ms ease;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
 }
 
 .widget-card:hover {

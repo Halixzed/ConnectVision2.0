@@ -1,39 +1,84 @@
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  Typography,
-  Container,
-  Box,
-} from "@mui/material";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { Box } from "@mui/material";
+import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
+import WarningAmberIcon from "@mui/icons-material/WarningAmber";
+import Header from "../components/Header";
+import connectLogo from "../assets/connect_flexeserve.svg";
+import "./OperatorPage.css";
 
 type Props = { onBack?: () => void };
 
 export default function OperatorPage({ onBack }: Props) {
   return (
-    <>
-      <AppBar position="static">
-        <Toolbar>
-          {onBack && (
-            <IconButton edge="start" color="inherit" onClick={onBack}>
-              <ArrowBackIcon />
-            </IconButton>
-          )}
-          <Typography variant="h6">Operator View</Typography>
-        </Toolbar>
-      </AppBar>
+    <div className="operator-page">
+      <Header
+        onBack={onBack}
+        title="2741593 - Grand Prairie | W Camp Wisdom Rd"
+      />
 
-      <Container sx={{ mt: 4 }}>
-        <Box>
-          <Typography variant="h4" gutterBottom>
-            Operator Dashboard
-          </Typography>
-          <Typography color="textSecondary">
-            Operational controls and quick actions go here.
-          </Typography>
-        </Box>
-      </Container>
-    </>
+      <div className="operator-content">
+        <div className="operator-grid">
+          <div className="operator-card">
+            <div className="operator-card-header">Flexeserve - LEFT</div>
+            <div className="operator-card-body">
+              <div className="temp-row">
+                <span className="status-dot" aria-hidden />
+                <div className="temp-value">
+                  <span className="temp-number">170</span>
+                  <span className="temp-unit">°F</span>
+                </div>
+              </div>
+              <div className="temp-row">
+                <span className="status-dot" aria-hidden />
+                <div className="temp-value">
+                  <span className="temp-number">170</span>
+                  <span className="temp-unit">°F</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="operator-card">
+            <div className="operator-card-header">Flexeserve - RIGHT*</div>
+            <div className="operator-card-body">
+              <div className="temp-row">
+                <span className="status-dot" aria-hidden />
+                <div className="temp-value">
+                  <span className="temp-number">170</span>
+                  <span className="temp-unit">°F</span>
+                </div>
+              </div>
+              <div className="temp-row">
+                <span className="status-dot" aria-hidden />
+                <div className="temp-value">
+                  <span className="temp-number">170</span>
+                  <span className="temp-unit">°F</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="operator-card">
+            <div className="operator-card-header">Pizza Spinner</div>
+            <div className="operator-card-body center">
+              <button className="power-button" type="button" aria-label="Power">
+                <PowerSettingsNewIcon fontSize="large" />
+              </button>
+            </div>
+          </div>
+
+          <div className="operator-card">
+            <div className="operator-card-header">Roller Grill</div>
+            <div className="operator-card-body center">
+              <div className="error-tile" role="status" aria-label="Error">
+                <WarningAmberIcon fontSize="large" />
+                <span className="error-text">ERROR</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <Box component="img" src={connectLogo} alt="connect" className="operator-footer-logo" />
+    </div>
   );
 }
