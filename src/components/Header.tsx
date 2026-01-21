@@ -79,12 +79,12 @@ export default function Header({ onBack, title }: Props) {
                 src={settingsIcon}
                 alt=""
                 sx={{
-                  width: 36,
-                  height: 36,
+                  width: 48,
+                  height: 48,
                   background:
                     "linear-gradient(45deg, #d94d14 0%, #f06a24 100%)",
                   borderRadius: "6px",
-                  padding: "4px 16px",
+                  padding: "2px 12px",
                 }}
               />
             </IconButton>
